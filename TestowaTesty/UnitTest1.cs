@@ -34,5 +34,15 @@ namespace TestowaTesty
 
             Assert.Equal(120.0, wynik);
         }
+
+        [Fact]
+        public void MinutyNaSekundy_Test()
+        {
+            Przelicznik przelicznik = new Przelicznik();
+
+            double wynik = przelicznik.MinutyNaSekundy(3);
+
+            Assert.Equal(180.0, wynik);
+        }
     }
 }
