@@ -15,5 +15,10 @@ namespace Testowa
         {
             return metry * 100;
         }
+
+        public double GodzinyNaMinuty(double godziny)
+        {
+            return godziny * 60;
+        }
     }
 }
