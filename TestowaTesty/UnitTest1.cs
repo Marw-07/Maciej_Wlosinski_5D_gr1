@@ -14,5 +14,15 @@ namespace TestowaTesty
 
             Assert.Equal(2000.0, wynik);
         }
+
+        [Fact]
+        public void MetryNaCentymetry_Test()
+        {
+            Przelicznik przelicznik = new Przelicznik();
+
+            double wynik = przelicznik.MetryNaCentymetry(3);
+
+            Assert.Equal(300.0, wynik);
+        }
     }
 }
