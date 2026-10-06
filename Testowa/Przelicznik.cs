@@ -10,5 +10,10 @@ namespace Testowa
         {
             return kilometry * 1000;
         }
+
+        public double MetryNaCentymetry(double metry)
+        {
+            return metry * 100;
+        }
     }
 }
