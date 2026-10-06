@@ -20,5 +20,10 @@ namespace Testowa
         {
             return godziny * 60;
         }
+
+        public double MinutyNaSekundy(double minuty)
+        {
+            return minuty * 60;
+        }
     }
 }
