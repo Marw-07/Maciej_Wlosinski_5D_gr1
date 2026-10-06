@@ -24,5 +24,15 @@ namespace TestowaTesty
 
             Assert.Equal(300.0, wynik);
         }
+
+        [Fact]
+        public void GodzinyNaMinuty_Test()
+        {
+            Przelicznik przelicznik = new Przelicznik();
+
+            double wynik = przelicznik.GodzinyNaMinuty(2);
+
+            Assert.Equal(120.0, wynik);
+        }
     }
 }
