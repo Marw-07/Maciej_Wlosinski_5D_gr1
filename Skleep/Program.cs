@@ -11,3 +11,8 @@ Console.WriteLine($"Produkt: {product.Name}");
 Console.WriteLine($"Cena za sztukę: {product.Price} zł");
 Console.WriteLine($"Wartość zamówienia: {total} zł");
 Console.WriteLine($"Pozostało w magazynie: {inventory.GetStock()}");
+
+decimal failedOrder = orderService.PlaceOrder(product, 8);
+
+Console.WriteLine($"Nieudane zamówienie: {failedOrder} zł");
+Console.WriteLine($"Stan magazynu: {inventory.GetStock()}");
