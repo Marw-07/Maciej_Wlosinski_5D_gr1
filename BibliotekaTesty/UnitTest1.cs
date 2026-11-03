@@ -51,4 +51,20 @@ public class TestyBiblioteki
         Assert.Contains("Pan Tadeusz - Dostepna", wynik);
     }
 
+
+    [Fact]
+    public void UzytkownikNieMozeZwrocicKsiazki()
+    {
+        string dane = "3\n1\n1\n4";
+        StringReader wejscie = new StringReader(dane);
+        StringWriter wyjscie = new StringWriter();
+
+        Program.Uruchom(wejscie, wyjscie);
+
+        string wynik = wyjscie.ToString();
+
+        Assert.Contains("Nie mozna zwrocic tej ksiazki.", wynik);
+        Assert.Contains("Pan Tadeusz - Dostepna", wynik);
+    }
+
 }
