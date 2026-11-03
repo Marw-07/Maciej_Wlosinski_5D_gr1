@@ -35,9 +35,10 @@ class Program
             else if (wybor == "2")
             {
                 Console.Write("Podaj numer ksiazki: ");
-                int numer = int.Parse(Console.ReadLine());
 
-                if (numer >= 1 && numer <= ksiazki.Length && dostepne[numer - 1])
+                if (int.TryParse(Console.ReadLine(), out int numer) &&
+                    numer >= 1 && numer <= ksiazki.Length &&
+                    dostepne[numer - 1])
                 {
                     dostepne[numer - 1] = false;
                     Console.WriteLine("Ksiazka zostala wypozyczona.");
@@ -45,6 +46,22 @@ class Program
                 else
                 {
                     Console.WriteLine("Nie mozna wypozyczyc tej ksiazki.");
+                }
+            }
+            else if (wybor == "3")
+            {
+                Console.Write("Podaj numer ksiazki: ");
+
+                if (int.TryParse(Console.ReadLine(), out int numer) &&
+                    numer >= 1 && numer <= ksiazki.Length &&
+                    !dostepne[numer - 1])
+                {
+                    dostepne[numer - 1] = true;
+                    Console.WriteLine("Ksiazka zostala zwrocona.");
+                }
+                else
+                {
+                    Console.WriteLine("Nie mozna zwrocic tej ksiazki.");
                 }
             }
             else if (wybor == "4")
