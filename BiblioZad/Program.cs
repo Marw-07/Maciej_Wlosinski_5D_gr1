@@ -9,6 +9,8 @@ class Program
         "Hobbit"
     };
 
+    static bool[] dostepne = { true, true, true };
+
     static void Main()
     {
         while (true)
@@ -24,9 +26,10 @@ class Program
 
             if (wybor == "1")
             {
-                foreach (string ksiazka in ksiazki)
+                for (int i = 0; i < ksiazki.Length; i++)
                 {
-                    Console.WriteLine(ksiazka);
+                    string status = dostepne[i] ? "Dostepna" : "Wypozyczona";
+                    Console.WriteLine(ksiazki[i] + " - " + status);
                 }
             }
             else if (wybor == "4")
