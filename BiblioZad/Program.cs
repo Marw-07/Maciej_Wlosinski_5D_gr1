@@ -1,6 +1,7 @@
 ﻿using System;
+using System.IO;
 
-class Program
+public class Program
 {
     static string[] ksiazki =
     {
@@ -11,66 +12,73 @@ class Program
 
     static bool[] dostepne = { true, true, true };
 
-    static void Main()
+    public static void Main()
     {
+        Uruchom(Console.In, Console.Out);
+    }
+
+    public static void Uruchom(TextReader wejscie, TextWriter wyjscie)
+    {
+        dostepne = new bool[] { true, true, true };
+
         while (true)
         {
-            Console.WriteLine("\nBIBLIOTEKA");
-            Console.WriteLine("1. Wyswietl ksiazki");
-            Console.WriteLine("2. Wypozycz ksiazke");
-            Console.WriteLine("3. Zwroc ksiazke");
-            Console.WriteLine("4. Zakoncz program");
-            Console.Write("Wybierz opcje: ");
+            wyjscie.WriteLine("\nBIBLIOTEKA");
+            wyjscie.WriteLine("1. Wyswietl ksiazki");
+            wyjscie.WriteLine("2. Wypozycz ksiazke");
+            wyjscie.WriteLine("3. Zwroc ksiazke");
+            wyjscie.WriteLine("4. Zakoncz program");
+            wyjscie.Write("Wybierz opcje: ");
 
-            string wybor = Console.ReadLine();
+            string wybor = wejscie.ReadLine();
 
             if (wybor == "1")
             {
                 for (int i = 0; i < ksiazki.Length; i++)
                 {
                     string status = dostepne[i] ? "Dostepna" : "Wypozyczona";
-                    Console.WriteLine((i + 1) + ". " + ksiazki[i] + " - " + status);
+                    wyjscie.WriteLine((i + 1) + ". " + ksiazki[i] + " - " + status);
                 }
             }
             else if (wybor == "2")
             {
-                Console.Write("Podaj numer ksiazki: ");
+                wyjscie.Write("Podaj numer ksiazki: ");
 
-                if (int.TryParse(Console.ReadLine(), out int numer) &&
+                if (int.TryParse(wejscie.ReadLine(), out int numer) &&
                     numer >= 1 && numer <= ksiazki.Length &&
                     dostepne[numer - 1])
                 {
                     dostepne[numer - 1] = false;
-                    Console.WriteLine("Ksiazka zostala wypozyczona.");
+                    wyjscie.WriteLine("Ksiazka zostala wypozyczona.");
                 }
                 else
                 {
-                    Console.WriteLine("Nie mozna wypozyczyc tej ksiazki.");
+                    wyjscie.WriteLine("Nie mozna wypozyczyc tej ksiazki.");
                 }
             }
             else if (wybor == "3")
             {
-                Console.Write("Podaj numer ksiazki: ");
+                wyjscie.Write("Podaj numer ksiazki: ");
 
-                if (int.TryParse(Console.ReadLine(), out int numer) &&
+                if (int.TryParse(wejscie.ReadLine(), out int numer) &&
                     numer >= 1 && numer <= ksiazki.Length &&
                     !dostepne[numer - 1])
                 {
                     dostepne[numer - 1] = true;
-                    Console.WriteLine("Ksiazka zostala zwrocona.");
+                    wyjscie.WriteLine("Ksiazka zostala zwrocona.");
                 }
                 else
                 {
-                    Console.WriteLine("Nie mozna zwrocic tej ksiazki.");
+                    wyjscie.WriteLine("Nie mozna zwrocic tej ksiazki.");
                 }
             }
-            else if (wybor == "4")
+            else if (wybor == "4" || wybor == null)
             {
                 break;
             }
             else
             {
-                Console.WriteLine("Nieprawidlowy wybor.");
+                wyjscie.WriteLine("Nieprawidlowy wybor.");
             }
         }
     }
