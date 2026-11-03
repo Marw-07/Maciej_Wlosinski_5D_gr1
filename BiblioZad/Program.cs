@@ -29,7 +29,22 @@ class Program
                 for (int i = 0; i < ksiazki.Length; i++)
                 {
                     string status = dostepne[i] ? "Dostepna" : "Wypozyczona";
-                    Console.WriteLine(ksiazki[i] + " - " + status);
+                    Console.WriteLine((i + 1) + ". " + ksiazki[i] + " - " + status);
+                }
+            }
+            else if (wybor == "2")
+            {
+                Console.Write("Podaj numer ksiazki: ");
+                int numer = int.Parse(Console.ReadLine());
+
+                if (numer >= 1 && numer <= ksiazki.Length && dostepne[numer - 1])
+                {
+                    dostepne[numer - 1] = false;
+                    Console.WriteLine("Ksiazka zostala wypozyczona.");
+                }
+                else
+                {
+                    Console.WriteLine("Nie mozna wypozyczyc tej ksiazki.");
                 }
             }
             else if (wybor == "4")
